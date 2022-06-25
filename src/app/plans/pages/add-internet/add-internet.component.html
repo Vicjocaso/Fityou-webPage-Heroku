@@ -1,0 +1,128 @@
+<form [formGroup]="myInternetForm">
+  <h1>Detalles del plan de Internet</h1>
+  <hr />
+
+  <div class="row">
+    <div class="col">
+      <!-- Velocidad de subida -->
+
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"
+            ><i class="pi pi-briefcase"></i
+          ></span>
+          <input
+            type="number"
+            pInputText
+            placeholder="Velocidad de subida"
+            formControlName="Uploadspeed"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('Uploadspeed')" class="text-danger">
+          La velocidad de subida es requerida.
+        </span>
+      </div>
+
+      <!-- Type of plan -->
+
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"
+            ><i class="pi pi-briefcase"></i
+          ></span>
+          <input
+            type="number"
+            pInputText
+            placeholder="Velocidad de bajada"
+            formControlName="Loweringspeed"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('Loweringspeed')" class="text-danger">
+          La velocidad de bajada es requerida.
+        </span>
+      </div>
+
+
+      <!-- Type of plan -->
+  
+      <div class="mb-3">
+       <div class="p-inputgroup">
+         <span class="p-inputgroup-addon"
+           ><i class="pi pi-briefcase"></i
+         ></span>
+         <input
+           type="number"
+           pInputText
+           placeholder="Velocidad"
+           formControlName="Speed"
+         />
+       </div>
+       <span *ngIf="this.isFieldInvalid('Speed')" class="text-danger">
+         La velocidad del internet es requerida.
+       </span>
+     </div>
+    </div>
+
+    <div class="col">
+
+      <!-- Type of plan -->
+
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"
+            ><i class="pi pi-briefcase"></i
+          ></span>
+          <input
+            type="text"
+            pInputText
+            placeholder="Tipo de internet"
+            formControlName="Typeofnet"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('Typeofnet')" class="text-danger">
+          El tipo de internet es requerido.
+        </span>
+      </div>
+
+      <!-- Type of plan -->
+
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"
+            ><i class="pi pi-briefcase"></i
+          ></span>
+          <input
+            type="text"
+            pInputText
+            placeholder="Descripción"
+            formControlName="Description"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('Description')" class="text-danger">
+          La descripción es requerido.
+        </span>
+      </div>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-offset-11">
+      <button
+        (click)="add()"
+        pButton
+        [disabled]="this.myInternetForm.invalid"
+        label="Agregar"
+        class="float-right"
+        icon="pi pi-check"
+      ></button>
+    </div>
+  </div>
+</form>
+
+<!-- See actual value of form here -->
+
+<!-- <pre>{{this.myInternetForm.value | json}}</pre> -->

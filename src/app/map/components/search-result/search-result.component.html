@@ -1,0 +1,27 @@
+<div *ngIf="isLoadinPlaces"
+     class="alert alert-primary mt-2 text-center">
+    <h6>Fityou esta cargando</h6>
+    <span>Espere por favor...</span>
+</div>
+
+<ul class="list-group mt-2 overflow-y-scroll" *ngIf="this.places.length > 0">
+
+    <li class="list-group-item list-group-item-action pointer" 
+        *ngFor="let item of places"
+         (click)="flyto(item)"   
+         [class.active]="selectedid === item.id"
+         >
+
+        <h6>{{ item.text_es }}</h6>
+        <p>
+            {{ item.place_name }}
+        </p>
+        <button class="btn btn-sm"
+                (click)="getDirection(item)"
+                [ngClass]="(item.id === selectedid) ? 'btn-outline-light' : 'btn-outline-primary'"   >
+            Direcciones
+        </button>
+
+    </li>
+
+</ul>

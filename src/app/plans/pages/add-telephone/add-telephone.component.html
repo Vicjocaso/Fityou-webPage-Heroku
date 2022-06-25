@@ -1,0 +1,86 @@
+<form [formGroup]="myTelephoneForm">
+    <h1>Detalles del plan de Telefono</h1>
+    <hr />
+  
+    <div class="row">
+      <div class="col">
+        <!-- Canales -->
+  
+        <div class="mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-briefcase"></i
+            ></span>
+            <input
+              type="text"
+              pInputText
+              placeholder="Minutos"
+              formControlName="Minutes"
+            />
+          </div>
+          <span *ngIf="this.isFieldInvalid('Minutes')" class="text-danger">
+            Los minutos son requeridos.
+          </span>
+        </div>
+  
+        <!-- Tipo de telecable -->
+  
+        <div class="mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-briefcase"></i
+            ></span>
+            <input
+              type="text"
+              pInputText
+              placeholder="Servicios"
+              formControlName="Service"
+            />
+          </div>
+          <span *ngIf="this.isFieldInvalid('Service')" class="text-danger">
+            Los servicios son requerido.
+          </span>
+        </div>
+  
+  
+        <!-- Type of plan -->
+    
+        <div class="mb-3">
+         <div class="p-inputgroup">
+           <span class="p-inputgroup-addon"
+             ><i class="pi pi-briefcase"></i
+           ></span>
+           <input
+             type="text"
+             pInputText
+             placeholder="Descripción"
+             formControlName="Description"
+           />
+         </div>
+         <span *ngIf="this.isFieldInvalid('Description')" class="text-danger">
+           La descripción no debe exceder los 250 caracteres.
+         </span>
+       </div>
+      </div>
+  
+      
+  
+    </div>
+  
+    <div class="row mt-5">
+      <div class="col-offset-11">
+        <button
+          (click)="add()"
+          pButton
+          [disabled]="this.myTelephoneForm.invalid"
+          label="Agregar"
+          class="float-right"
+          icon="pi pi-check"
+        ></button>
+      </div>
+    </div>
+  </form>
+  
+  <!-- See actual value of form here -->
+  
+  <!-- <pre>{{this.myTelephoneForm.value | json}}</pre> -->

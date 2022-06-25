@@ -1,0 +1,86 @@
+<form [formGroup]="myTelecableForm">
+    <h1>Detalles del plan de Telecable</h1>
+    <hr />
+  
+    <div class="row">
+      <div class="col">
+        <!-- Canales -->
+  
+        <div class="mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-briefcase"></i
+            ></span>
+            <input
+              type="text"
+              pInputText
+              placeholder="Canales"
+              formControlName="Chanels"
+            />
+          </div>
+          <span *ngIf="this.isFieldInvalid('Chanels')" class="text-danger">
+            Los canales son requeridos.
+          </span>
+        </div>
+  
+        <!-- Tipo de telecable -->
+  
+        <div class="mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"
+              ><i class="pi pi-briefcase"></i
+            ></span>
+            <input
+              type="text"
+              pInputText
+              placeholder="Tipo de telecable"
+              formControlName="TypeOfTelecable"
+            />
+          </div>
+          <span *ngIf="this.isFieldInvalid('TypeOfTelecable')" class="text-danger">
+            El tipo de telecable es requerido.
+          </span>
+        </div>
+  
+  
+        <!-- Type of plan -->
+    
+        <div class="mb-3">
+         <div class="p-inputgroup">
+           <span class="p-inputgroup-addon"
+             ><i class="pi pi-briefcase"></i
+           ></span>
+           <input
+             type="text"
+             pInputText
+             placeholder="Descripción"
+             formControlName="Description"
+           />
+         </div>
+         <span *ngIf="this.isFieldInvalid('Description')" class="text-danger">
+           La descripción no debe exceder los 250 caracteres.
+         </span>
+       </div>
+      </div>
+  
+      
+  
+    </div>
+  
+    <div class="row mt-5">
+      <div class="col-offset-11">
+        <button
+          (click)="add()"
+          pButton
+          [disabled]="this.myTelecableForm.invalid"
+          label="Agregar"
+          class="float-right"
+          icon="pi pi-check"
+        ></button>
+      </div>
+    </div>
+  </form>
+  
+  <!-- See actual value of form here -->
+  
+  <!-- <pre>{{this.myTelecableForm.value | json}}</pre> -->

@@ -1,0 +1,79 @@
+<form [formGroup]="myForm" autocomplete="off">
+  <div style="position: relative">
+    <div
+      style="position: absolute; left: 90%; margin-left: 90px; padding: 10px"
+    >
+      <button
+        (click)="goHome()"
+        pButton
+        icon="pi pi-angle-left"
+        type="button"
+        class="p-button-rounded"
+      ></button>
+    </div>
+  </div>
+  <main class="login-design">
+    <div class="image">
+      <div style="margin-left: 45%; margin-top: 50%; color: aliceblue">
+        <!-- <p-button label="Ir a inicio" className="p-button-success"></p-button> -->
+        <!-- <button
+          (click)="goHome()"
+          pButton
+          type="button"
+          label="Ir a inicio"
+          class="p-button-primary p-button-raised p-button-rounded"
+        ></button> -->
+      </div>
+    </div>
+    <div class="login">
+      <div class="login-data">
+        <img src="assets/FitYou LOGO.png" width="300" />
+        <h1>Inicio de Sesión</h1>
+        <div class="input-group">
+          <label class="input-fill">
+            <input
+              (keyup.enter)="login()"
+              formControlName="username"
+              name="email"
+              placeholder="Nombre de usuario"
+              id="email"
+              required
+            />
+            <i class="fa-solid fa-envelope"></i>
+          </label>
+        </div>
+        <div class="input-group">
+          <label class="input-fill">
+            <input
+              (keyup.enter)="login()"
+              formControlName="password"
+              name="password"
+              type="password"
+              placeholder="Contraseña"
+              id="password"
+              required
+            />
+            <i class="fa-solid fa-lock"></i>
+          </label>
+        </div>
+
+        <!-- <div class="alert alert-danger">
+                    Contraseña o nombre de usuario incorrecto
+                </div> -->
+
+        <!-- <a href="#">¿Necesitas una Cuenta?</a> -->
+        <p-button (click)="login()" class="mt-5">Iniciar Sesión</p-button>
+        <br />
+        <br />
+
+        <p-message
+          severity="error"
+          text="Contraseña o nombre de usuario incorrecto"
+          *ngIf="!loginSuccess"
+        ></p-message>
+      </div>
+    </div>
+
+    <!-- <pre>{{ this.myForm.value | json }}</pre> -->
+  </main>
+</form>

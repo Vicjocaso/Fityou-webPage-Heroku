@@ -1,0 +1,174 @@
+<!-- <div>
+    form:
+</div>
+
+<pre class="ml-5">{{this.myForm.value | json}}</pre> -->
+<div class="grid">
+  <div style="background-color: #023e8a" class="background col p-0 m-0">
+    <div class="grid">
+      <div
+        class="col"
+        style="
+          color: whitesmoke;
+          margin-top: 150px;
+          font-size: larger;
+          text-align: center;
+        "
+      >
+        <h1>Agregar planes</h1>
+        <p class="mb-8" style="font-size: larger">
+          La mejor solución para tí, está en tus manos, está en FitYou.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="myForm" class="container mt-5">
+  <h1>Agregar Plan</h1>
+  <hr />
+
+  <div class="row">
+    <div class="col">
+      <!-- Title -->
+
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"
+            ><i class="pi pi-briefcase"></i
+          ></span>
+          <input
+            type="text"
+            pInputText
+            placeholder="Titulo"
+            formControlName="Title"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('Title')" class="text-danger">
+          El titulo es requerido
+        </span>
+      </div>
+
+      <!-- Type of plan -->
+
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">$</span>
+          <input
+            type="number"
+            pInputText
+            placeholder="Precio"
+            formControlName="price"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('price')" class="text-danger">
+          El precio es requerido y debe ser igual o mayor a 0.
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <h6 class="ml-2">Tipo de compañía:</h6>
+
+        <p-dropdown
+          class="col"
+          placeholder="-- Seleccione una compañía --"
+          [options]="companies"
+          formControlName="companyId"
+          optionLabel="Name"
+          optionValue="Id"
+        ></p-dropdown>
+
+        <div class="row">
+          <span *ngIf="this.isFieldInvalid('companyId')" class="text-danger">
+            La compañía es requerida.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+          <input
+            type="text"
+            pInputText
+            placeholder="Currency, Ex: DOP, USD..."
+            formControlName="currency"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('currency')" class="text-danger">
+          La moneda es requerida y debe tener 3 caracteres, ej: DOP.
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+          <input
+            type="text"
+            pInputText
+            placeholder="Description"
+            formControlName="description"
+          />
+        </div>
+        <span *ngIf="this.isFieldInvalid('description')" class="text-danger">
+          La descripción es requerida.
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <h6 class="ml-2">Tipo de plan:</h6>
+
+        <p-dropdown
+          class="col"
+          placeholder="-- Seleccione un tipo de plan --"
+          [options]="typeOfPlans"
+          formControlName="TypeOfPlan"
+          (onChange)="typeOfPlanChange( $event )"
+          optionLabel="label"
+          optionValue="value"
+        ></p-dropdown>
+
+        <div class="row">
+          <span *ngIf="this.isFieldInvalid('TypeOfPlan')" class="text-danger">
+            El tipo de plan es requerido
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row mt-5" *ngIf="this.myForm.controls['typeOfPlans']?.value === ''">
+      <div class="col-offset-11">
+        <button
+          (click)="add()"
+          pButton
+          label="Agregar"
+          class="float-right"
+          icon="pi pi-check"
+        ></button>
+      </div>
+    </div> -->
+
+    <div [ngSwitch]="this.typeOfPlan">
+      <div *ngSwitchCase="'I'">
+        <app-add-internet
+        (onNewInternet)="add( $event )"
+        ></app-add-internet>
+      </div>
+      <div *ngSwitchCase="'T'">
+        <app-add-telephone
+        (onNewTelephone)="add( $event )"></app-add-telephone>
+      </div>
+      <div *ngSwitchCase="'C'">
+        <app-add-telecable
+        (onNewTelecable)="add( $event )"></app-add-telecable>
+      </div>
+      <div *ngSwitchDefault></div>
+    </div>
+  </div>
+</form>
+
+<!-- Uncomment this line to know the current value of the form -->
+
+<!-- <pre>{{this.myForm.value | json}}</pre> -->

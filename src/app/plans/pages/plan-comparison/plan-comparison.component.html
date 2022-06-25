@@ -1,0 +1,183 @@
+<div class="grid">
+  <div style="background-color: #023e8a" class="background col p-0 m-0">
+    <div class="grid">
+      <div
+        class="col"
+        style="
+          color: whitesmoke;
+          margin-top: 150px;
+          font-size: larger;
+          text-align: center;
+        "
+      >
+        <h1>Compara planes</h1>
+        <p class="mb-8" style="font-size: larger">
+          La mejor solución para tí, está en tus manos, está en FitYou.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <p-toast></p-toast>
+
+<button
+  type="button"
+  (click)="show()"
+  pButton
+  icon="pi pi-info-circle"
+  label="Show"
+></button> -->
+<div class="grid m-5">
+  <!-- <p-splitter [style]="{ height: '600px' }" styleClass="p-mb-5"> -->
+  <p-card
+    header="Advanced Card"
+    subheader="Card Subheader"
+    [style]="{ width: '360px', margin: '40px' }"
+    styleClass="p-card-shadow"
+  >
+    <p-dataView #dv [value]="plan1" layout="grid">
+      <ng-template let-plan pTemplate="gridItem">
+        <div class="p-col-12 p-md-2">
+          <div class="plan-grid-item p-3">
+            <div class="product-grid-item-top">
+              <div class="product-list-detail">
+                <div class="product-name">{{ plan.Title }}</div>
+                <i
+                  *ngIf="plan.TypeOfPlan === 'I'"
+                  class="pi pi-globe product-category-icon"
+                ></i>
+                <i
+                  *ngIf="plan.TypeOfPlan === 'C'"
+                  class="pi pi-globe product-category-icon"
+                ></i>
+                <i
+                  *ngIf="plan.TypeOfPlan === 'T'"
+                  class="pi pi-phone product-category-icon"
+                ></i>
+              </div>
+            </div>
+            <div class="plan-grid-item-content">
+              <div class="m-5">
+                <h4>{{ plan.price | currency: "RD$ " }}</h4>
+              </div>
+              <div class="plan-description">
+                {{ plan.Description }}
+              </div>
+              <br />
+
+              <div *ngIf="this.plan1[0].TypeOfPlan === 'I'">
+                <label> Velocidad de subida : </label>
+                <span>{{ plan.Internet?.Uploadspeed }}</span>
+                <br />
+                <label> Velocidad de bajada : </label>
+                <span>{{ plan.Internet?.Loweringspeed }}</span>
+                <br />
+                <label> Velocidad : </label>
+                <span>{{ plan.Internet?.Speed }}</span>
+                <br />
+                <label> Tipo de Internet : </label>
+                <span>{{ plan.Internet?.TypeOfNet }}</span>
+                <br />
+                <label> Descripcion : </label>
+                <span>{{ plan.Internet?.Description }}</span>
+              </div>
+              <div *ngIf="this.plan1[0].TypeOfPlan === 'C'">
+                <label> Canales : </label>
+                <span>{{ plan.Telecable?.Chanels }}</span>
+                <label> Tipo de cable : </label>
+                <span>{{ plan.Telecable?.TypeOfTelecable }}</span>
+                <label> Descripcion : </label>
+                <span>{{ plan.Telecable?.Description }}</span>
+              </div>
+              <div *ngIf="this.plan1[0].TypeOfPlan === 'T'">
+                <label> Minutos : </label>
+                <span>{{ plan.Telephone?.Minutes }}</span>
+                <label> Servicio : </label>
+                <span>{{ plan.Telephone?.Service }}</span>
+                <label> Descripcion : </label>
+                <span>{{ plan.Telephone?.Description }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </p-card>
+  <p-card
+    header="Advanced Card"
+    subheader="Card Subheader"
+    [style]="{ width: '360px', margin: '40px' }"
+    styleClass="p-card-shadow"
+  >
+    <p-dataView #dv [value]="plan2" filterBy="name" layout="grid">
+      <ng-template let-plan pTemplate="gridItem">
+        <div class="p-col-12 p-md-2">
+          <div class="plan-grid-item p-3">
+            <div class="product-grid-item-top">
+              <div class="product-list-detail">
+                <div class="product-name">{{ plan.Title }}</div>
+                <i
+                  *ngIf="plan.TypeOfPlan === 'I'"
+                  class="pi pi-globe product-category-icon"
+                ></i>
+                <i
+                  *ngIf="plan.TypeOfPlan === 'C'"
+                  class="pi pi-globe product-category-icon"
+                ></i>
+                <i
+                  *ngIf="plan.TypeOfPlan === 'T'"
+                  class="pi pi-phone product-category-icon"
+                ></i>
+              </div>
+            </div>
+            <div class="plan-grid-item-content">
+              <div class="m-5">
+                <h4>{{ plan.price | currency: "RD$ " }}</h4>
+              </div>
+              <div class="plan-description">{{ plan.Description }}</div>
+              <br />
+
+              <div *ngIf="this.plan2[0].TypeOfPlan === 'I'">
+                <label> Velocidad de bajada : </label>
+                <span>{{ plan.Internet?.Uploadspeed }}</span>
+                <br />
+                <label> Velocidad de bajada : </label>
+                <span>{{ plan.Internet?.Loweringspeed }}</span>
+                <br />
+                <label> Velocidad de bajada : </label>
+                <span>{{ plan.Internet?.Speed }}</span>
+                <br />
+                <label> Velocidad de bajada : </label>
+                <span>{{ plan.Internet?.TypeOfNet }}</span>
+                <br />
+                <label> Velocidad de bajada : </label>
+                <span>{{ plan.Internet?.Description }}</span>
+              </div>
+              <div *ngIf="this.plan2[0].TypeOfPlan === 'C'">
+                <label> Canales : </label>
+                <span>{{ plan.Telecable?.Chanels }}</span>
+                <br />
+                <label> Tipo de cable : </label>
+                <span>{{ plan.Telecable?.TypeOfTelecable }}</span>
+                <br />
+                <label> Descripcion : </label>
+                <span>{{ plan.Telecable?.Description }}</span>
+              </div>
+              <div *ngIf="this.plan2[0].TypeOfPlan === 'T'">
+                <label> Minutos : </label>
+                <span>{{ plan.Telephone?.Minutes }}</span>
+                <br />
+                <label> Servicio : </label>
+                <span>{{ plan.Telephone?.Service }}</span>
+                <br />
+                <label> Descripcion : </label>
+                <span>{{ plan.Telephone?.Description }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </p-card>
+  <!-- </p-splitter> -->
+</div>
