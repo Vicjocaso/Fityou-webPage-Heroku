@@ -1,4 +1,3 @@
-# Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM node:16
 
 WORKDIR /app
@@ -11,6 +10,6 @@ COPY . .
 
 EXPOSE 4200
 
-# RUN npm build
+# RUN npm run build
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "docker" ]

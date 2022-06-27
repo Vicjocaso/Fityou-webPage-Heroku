@@ -27,13 +27,13 @@
   icon="pi pi-info-circle"
   label="Show"
 ></button> -->
-<div class="grid m-5">
+<div class="grid m-5 justify-content-center">
   <!-- <p-splitter [style]="{ height: '600px' }" styleClass="p-mb-5"> -->
   <p-card
-    header="Advanced Card"
-    subheader="Card Subheader"
+    header="Titulo Card"
+    subheader="Subtitulo Card"
     [style]="{ width: '360px', margin: '40px' }"
-    styleClass="p-card-shadow"
+    styleClass="card"
   >
     <p-dataView #dv [value]="plan1" layout="grid">
       <ng-template let-plan pTemplate="gridItem">
@@ -103,11 +103,12 @@
       </ng-template>
     </p-dataView>
   </p-card>
+
   <p-card
-    header="Advanced Card"
-    subheader="Card Subheader"
+    header="Titulo Card"
+    subheader="Subtitulo Card"
     [style]="{ width: '360px', margin: '40px' }"
-    styleClass="p-card-shadow"
+    styleClass="card"
   >
     <p-dataView #dv [value]="plan2" filterBy="name" layout="grid">
       <ng-template let-plan pTemplate="gridItem">
